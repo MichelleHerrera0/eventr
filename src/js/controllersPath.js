@@ -23,7 +23,7 @@ function upEvent(req, res){
         const newPathBanner = './images-load/'+(data.nombre+req.files['banner'][0].originalname);
         const valuesCreater = {nombre: data.nombre, tipo: data.tipo};
         
-        let emailUser=req.session.correo;
+        let emailU=req.session.correo;
         let idUser;
 
 
@@ -36,7 +36,7 @@ function upEvent(req, res){
                 if (err) throw err;
                 console.log('Successfully upload table creater');
 
-                conn.query(query.emailUser(), emailUser, (err, userdata)=>{
+                conn.query(query.emailUser(), [emailU], (err, userdata)=>{
                     if(userdata.length > 0){
                         userdata.forEach(element =>{
                             idUser=element.idUsuario;
