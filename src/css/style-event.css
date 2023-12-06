@@ -87,3 +87,12 @@
     width: 90%;
     text-align: justify;
 }
+div iframe{
+    position: relative;
+    left: 10%;
+}
+#map{
+    position: relative;
+    left: 10%;
+    height: 350px;
+}

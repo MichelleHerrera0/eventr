@@ -14,3 +14,4 @@ function backgroundBanner(pathBanner){
     console.log(pathBanner);
     bannerElement.style.backgroundImage = `url(${pathBanner})`;
 }
+

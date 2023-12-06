@@ -3,6 +3,7 @@ const query = require('./query');
 const fs = require('node:fs');
 const { Console } = require('node:console');
 const moment = require('moment');
+const hbs = require('handlebars');
 
 function event(req, res){
     if(req.session.loggedin == true){
@@ -173,6 +174,9 @@ function eventBd(req, res){
                 const hourMin = moment(time, 'HH:mm:ss').format('HH:mm');
                 const pathBanner = event[0].banner;
                 const pathBannerW= pathBanner.replace(/ /g, "\\ ");
+                const ubicacion = event[0].ubicacion.split(',');
+                const latitud = ubicacion[0];
+                const longitud =ubicacion[1];
 
 
                 if(err){
@@ -182,7 +186,7 @@ function eventBd(req, res){
                     if(err){
                         res.json(err);
                     }
-                    res.render('pages/eventBd', {name: req.session.name, event, day: day, month: monthText, abrMont: abrMthText ,year: year, date: onlyDate, weekDay: weekDay, time: hourMin, gallery, pathBanner: pathBannerW});
+                    res.render('pages/eventBd', {name: req.session.name, event, day: day, month: monthText, abrMont: abrMthText ,year: year, date: onlyDate, weekDay: weekDay, time: hourMin, gallery, pathBanner: pathBannerW, lat:latitud, long:longitud});
                 })
             }); 
         });
