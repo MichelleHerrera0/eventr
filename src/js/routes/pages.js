@@ -5,7 +5,7 @@ const multer = require('multer');
 const upload = multer({dest: 'images-load/'});
 
 const router = express.Router();
-
+ 
 router.get('/event', Control.event);
 router.get('/form', Control.form);
 router.post('/form', upload.fields([
